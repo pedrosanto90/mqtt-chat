@@ -6,7 +6,7 @@ export default function Chat() {
   return (
     <div className="h-screen flex flex-col pb-6">
       {/* Cabeçalho fixo no topo */}
-      <HeaderChat />
+      <HeaderChat title='Chat Room' />
 
       {/* Conteúdo principal: lateral + chat */}
       <div className="flex flex-1 overflow-hidden">
