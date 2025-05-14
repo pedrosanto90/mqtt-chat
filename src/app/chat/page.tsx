@@ -4,7 +4,7 @@ import ChatBox from "@/components/ChatBox/ChatBox"
 
 export default function Chat() {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col pb-6">
       {/* Cabeçalho fixo no topo */}
       <HeaderChat />
 
