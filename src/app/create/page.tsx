@@ -7,11 +7,22 @@ export default function CreateAccount() {
         <form action="" className='flex flex-col border-2 border-blue-500 justify-center items-center p-10 mt-10 rounded-xl'>
           <h1 className='mb-5 text-xl'>Create Account</h1>
           <p>Name</p>
-          <input type="text" className='border-2 rounded-xl border-blue-500 p-1 m-2' />
+          <input
+            type="text"
+            className='border-2 rounded-xl border-blue-500 p-1 m-2'
+            placeholder='Name'
+          />
           <p>Email</p>
-          <input type="text" className='border-2 rounded-xl border-blue-500 p-1 m-2' />
+          <input
+            type="text"
+            className='border-2 rounded-xl border-blue-500 p-1 m-2'
+            placeholder='Email'
+          />
           <p>Password</p>
-          <input type="password" className='border-2 rounded-xl border-blue-500 p-1 m-2' />
+          <input type="password"
+            className='border-2 rounded-xl border-blue-500 p-1 m-2'
+            placeholder='Password'
+          />
           <button type='submit' className='bg-blue-500 text-white p-3 m-2 rounded-xl hover:bg-blue-600'>Create Account</button>
         </form>
       </div>
