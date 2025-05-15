@@ -1,6 +1,11 @@
 import mqtt from "mqtt";
+import { parse } from "cookie";
 
-export default function MqttPublisher(msg: string, topic: string) {
+export default function MqttPublisher(
+  msg: string,
+  topic: string,
+  user: string,
+) {
   // const topic = "msg/mqtt/chat";
 
   const client = mqtt.connect(
@@ -10,9 +15,13 @@ export default function MqttPublisher(msg: string, topic: string) {
       password: ".5,><981JLEIxAuvDtfw",
     },
   );
-
+  const message = {
+    user: user,
+    msg: msg,
+    topic: topic,
+  };
   client.on("connect", () => {
-    client.publish(topic, msg, {}, (err) => {
+    client.publish(topic, JSON.stringify(message), {}, (err) => {
       if (err) {
         console.error("Publish error:", err);
       }

@@ -1,10 +1,16 @@
 "use client";
 
-import mqtt from "mqtt";
 import { useEffect, useState } from "react";
+import mqtt from "mqtt";
+
+type Message = {
+  user: string;
+  msg: string;
+  topic: string;
+};
 
 export default function MqttSubscriber(topic: string) {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     const client = mqtt.connect(
@@ -27,7 +33,12 @@ export default function MqttSubscriber(topic: string) {
 
     client.on("message", (receivedTopic, message) => {
       if (receivedTopic === topic) {
-        setMessages((prev) => [...prev, message.toString()]);
+        try {
+          const parsedMessage: Message = JSON.parse(message.toString());
+          setMessages((prev) => [...prev, parsedMessage]);
+        } catch (error) {
+          console.error("Erro ao parsear mensagem JSON:", error);
+        }
       }
     });
 
